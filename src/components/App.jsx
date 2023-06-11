@@ -40,25 +40,25 @@ export function App() {
 
   return (
     <Wrapper>
-    <Section title="Please leave feed back">
-      <FeedbackOptions
-        options={['good', 'neutral', 'bad']}
-        onLeaveFeedback={handleIncrement}
-      />
-    </Section>
-    {countTotalFeedback() ? (
-      <Section title="Statistics">
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={countTotalFeedback}
-          positivePercentage={countPositiveFeedbackPercentage}
+      <Section title="Please leave feed back">
+        <FeedbackOptions
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={handleIncrement}
         />
       </Section>
-    ) : (
-      <Notification message="There is no feedback" />
-    )}
-  </Wrapper>
-);
+      {countTotalFeedback() ? (
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={countTotalFeedback}
+            positivePercentage={countPositiveFeedbackPercentage}
+          />
+        </Section>
+      ) : (
+        <Notification message="There is no feedback" />
+      )}
+    </Wrapper>
+  );
 }
