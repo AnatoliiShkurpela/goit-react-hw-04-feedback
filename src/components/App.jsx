@@ -16,23 +16,29 @@ export function App() {
     return good + neutral + bad;
   };
 
-  countPositiveFeedbackPercentage = () => {
-    return Math.round(
-      (this.state.good /
-        (this.state.good + this.state.neutral + this.state.bad)) *
-        100
-    );
+  const countPositiveFeedbackPercentage = () => {
+    return Math.round((good / (good + neutral + bad)) * 100);
   };
 
-  handleIncrement = event => {
+  const handleIncrement = event => {
     event.preventDefault();
-    this.setState(prevState => {
-      return { [event.target.name]: prevState[event.target.name] + 1 };
-    });
+    const { name } = event.target;
+    switch (name) {
+      case 'good':
+        setGoodFtb(prevGoodFtb => prevGoodFtb + 1);
+        break;
+      case 'neutral':
+        setNeutralFtb(prevNeutralFtb => prevNeutralFtb + 1);
+        break;
+      case 'bad':
+        setBadFtb(prevBadFtb => prevBadFtb + 1);
+        break;
+      default:
+        return;
+    }
   };
 
-  render() {
-    return (
+  return (
       <Wrapper>
         <Section title="Please leave feed back">
           <FeedbackOptions
