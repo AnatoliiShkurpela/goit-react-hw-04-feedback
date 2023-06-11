@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import { Wrapper } from './App.styled';
 
@@ -7,15 +7,13 @@ import { FeedbackOptions } from 'components/feedbackOptions/FeedbackOptions';
 import { Section } from 'components/section/Section';
 import { Notification } from 'components/notification/Notification';
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+export function App() {
+  const [good, setGoodFtb] = useState(0);
+  const [neutral, setNeutralFtb] = useState(0);
+  const [bad, setBadFtb] = useState(0);
 
-  countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+  const countTotalFeedback = () => {
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
